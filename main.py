@@ -13,3 +13,8 @@
     - cna delete the data if needed (will need to add an id of sorts or can just need to get the index)
 5. output a file of the list of elements that the person has added 
 '''
+import streamlit as st
+
+st.write("Welcome to the Say Yes Project")
+st.write("Where you can keep tracj of all of your ideas for upcoming Nuptules!")
+# print("Welcome to the Say Yes Project, where you can keep track of all of your ideas for your wedding!")
