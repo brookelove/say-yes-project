@@ -1,4 +1,15 @@
 
+def dresses():
+    print("Great lets get some information to get you started on adding dress information!")
+
+
+def venue():
+    print("Lets make that list of venues!")
+
+
+def budget():
+    print("It is always great to get a new budget!")
+
 
 def menu():
     choice = False
@@ -9,15 +20,15 @@ def menu():
         if menu_choice.upper() == 'D':
             choice = True
             return menu_choice
-        if menu_choice.upper() == 'A':
-            pass
+        elif menu_choice.upper() == 'A':
+            dresses()
         elif menu_choice.upper() == 'B':
-            pass
+            venue()
         elif menu_choice.upper() == 'C':
-            pass
+            budget()
         else:
             print("Please Try entering one of the choices listed above. If you are trying to exit this menu, print 'D'.")
             menu()
 
 
-menu()
+# menu()

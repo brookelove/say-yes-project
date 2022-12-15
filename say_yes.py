@@ -15,6 +15,7 @@
 import datetime
 import exceptions
 import string
+import moodboard
 
 TODAY = datetime.date.today()
 
@@ -98,4 +99,6 @@ if __name__ == "__main__":
         print("Please enter a date that is between 1 - 31")
     else:
         # start of the taking in the data
-        print(result)
+        print(place)
+        moodboard.menu()
+        # moodboard()
