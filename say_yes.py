@@ -79,18 +79,22 @@ if __name__ == "__main__":
     # date_valid(place)
     try:  # TRY BLOCK
         # introStatement()
-        place = ['10/24/2024']
+        # place = ['10/24/2024']
         done = False
         while not done:
+            # basic_info = introStatement()
+            basic_info = ('Brooke', 'David', '27/10/2024')
+            date = basic_info[2].split()
+            # print(date)
             #result = introStatement()
             # thee result should be introstatement()
-            result = date_valid(place)
+            result = date_valid(date)
             done = True
     except exceptions.OutOfBounds:
         print(
             "You have entered a invalid Date please try again with this format (DD/MM/YYYY)")
-    except exceptions.NotValidDate:
-        print("You have entered a invalid date please try ")
+    # except exceptions.NotValidDate:
+    #     print("You have entered a invalid date please try ")
     except exceptions.NotValidYear:
         print(f"Please enter a date greater than: {TODAY.year}")
     except exceptions.NonValdMonth:
@@ -99,6 +103,6 @@ if __name__ == "__main__":
         print("Please enter a date that is between 1 - 31")
     else:
         # start of the taking in the data
-        print(place)
-        moodboard.menu()
+        # print(pl)
+        moodboard.menu(basic_info)
         # moodboard()
