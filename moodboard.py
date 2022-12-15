@@ -10,19 +10,20 @@ def dresses():
     print("Great lets get some information to get you started on adding dress information!")
     dress_length = input(
         "What's the length of your dress?(mini, midi, floor length, ankle)\n")
-    new_dress.append(dress_length)
     dress_type = input(
         "What's body type is  of your dress? For example there is mermaid, ballgown, column, and more\n")
-    new_dress.append(dress_type)
     lace = input("Is the dress your looking at lace (Y/N)?\n")
-    new_dress.append(lace)
     beaded = input("Is the dress your looking at beaded?(Y/N)\n")
-    new_dress.append(beaded)
     company = input("What company makes your potenital dress\n")
-    new_dress.append(company)
     shop = input("How much does this dress cost?\n")
+
+    new_dress.append(dress_length)
+    new_dress.append(dress_type)
+    new_dress.append(lace)
+    new_dress.append(beaded)
+    new_dress.append(company)
     new_dress.append(shop)
-    # print(new_dress)
+    print(new_dress)
     DRESSES[len(DRESSES) + 1] = new_dress
     # new_dress.clear()
     # make the counter have for the dictionary value
@@ -79,8 +80,7 @@ def generate_table_and_text():
 
 def menu(user_info):
     choice = False
-    dress_headers = {'': "num", 'Length': 'lengt vavalue', 'Type': 'type value', 'Lace': 'lace value',
-                     'Beaded': 'beaded value', 'Company': 'company value', 'Shop': "shop value"}
+    dress_headers = ['', 'Length', 'Type', 'Lace', 'Beaded', 'Company', 'Shop']
     venue_headers = {'Location',
                      'Indoor/Outdoor', 'What Do they Provide', 'Price'}
     # DRESSES[len(DRESSES)] = dress_headers
@@ -96,17 +96,22 @@ def menu(user_info):
         elif menu_choice.upper() == 'A':
             dresses()
             # print(DRESSES)
+            print(DRESSES.values())
+            print(
+                tabulate([DRESSES.values()], headers=dress_headers))
             # print(
             # tabulate([DRESSES.values()], headers=dress_headers))
             # print(
             #     tabulate([(k,) + v for k, v in DRESSES.items()], headers=dress_headers))
             #       tablefmt="fancy_grid"))
-            print("{:<10} {:<10} {:<10} {:<10} {:<10} {:<10}".format('Length', 'Type', 'Lace',
-                                                                     'Beaded', 'Company', 'Shop'))
-            for key, value in DRESSES.items():
-                length, dress_type, lace, beaded, company, shop = value
-                print("{:<10} {:<10} {:<10} {:<10} {:<10} {:<10}".format(length, dress_type, lace,
-                                                                         beaded, company, shop))
+            # -------------------------------------------------
+            # print("{:<10} {:<10} {:<10} {:<10} {:<10} {:<10}".format('Length', 'Type', 'Lace',
+            #                                                          'Beaded', 'Company', 'Shop'))
+            # for key, value in DRESSES.items():
+            #     length, dress_type, lace, beaded, company, shop = value
+            #     print("{:<10} {:<10} {:<10} {:<10} {:<10} {:<10}".format(length, dress_type, lace,
+            #                                                              beaded, company, shop))
+            # ------------------------------------------------------
         # elif menu_choice.upper() == 'B':
         #     venue()
         #     print("{:<10} {:<10} {:<10} {:<10}".format(
