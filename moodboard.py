@@ -1,12 +1,12 @@
 from tabulate import tabulate
 
-DRESSES = {}
+DRESSES = []
 VENUES = {}
 BUDGET = {}
 
 
 def dresses():
-    new_dress = []
+    # new_dress = []
     print("Great lets get some information to get you started on adding dress information!")
     dress_length = input(
         "What's the length of your dress?(mini, midi, floor length, ankle)\n")
@@ -14,17 +14,25 @@ def dresses():
         "What's body type is  of your dress? For example there is mermaid, ballgown, column, and more\n")
     lace = input("Is the dress your looking at lace (Y/N)?\n")
     beaded = input("Is the dress your looking at beaded?(Y/N)\n")
-    company = input("What company makes your potenital dress\n")
-    shop = input("How much does this dress cost?\n")
-
-    new_dress.append(dress_length)
-    new_dress.append(dress_type)
-    new_dress.append(lace)
-    new_dress.append(beaded)
-    new_dress.append(company)
-    new_dress.append(shop)
+    designer = input("What designer makes your potenital dress\n")
+    price = input("How much does this dress cost?\n")
+    new_dress = {
+        '': len(DRESSES) + 1,
+        'Length': dress_length,
+        'Type': dress_type,
+        'Lace': lace,
+        'Beaded': beaded,
+        'Designer': designer,
+        'Price': price
+    }
+    # new_dress.append(dress_length)
+    # new_dress.append(dress_type)
+    # new_dress.append(lace)
+    # new_dress.append(beaded)
+    # new_dress.append(company)
+    # new_dress.append(shop)
     print(new_dress)
-    DRESSES[len(DRESSES) + 1] = new_dress
+    DRESSES.append(new_dress)
     # new_dress.clear()
     # make the counter have for the dictionary value
 
@@ -80,7 +88,7 @@ def generate_table_and_text():
 
 def menu(user_info):
     choice = False
-    dress_headers = ['', 'Length', 'Type', 'Lace', 'Beaded', 'Company', 'Shop']
+    # dress_headers = ['Length', 'Type', 'Lace', 'Beaded', 'Company', 'Shop']
     venue_headers = {'Location',
                      'Indoor/Outdoor', 'What Do they Provide', 'Price'}
     # DRESSES[len(DRESSES)] = dress_headers
@@ -94,11 +102,13 @@ def menu(user_info):
             choice = True
             return print(user_info)
         elif menu_choice.upper() == 'A':
+            # DRESSES[len(DRESSES)] = dress_headers
             dresses()
             # print(DRESSES)
-            print(DRESSES.values())
-            print(
-                tabulate([DRESSES.values()], headers=dress_headers))
+            print(tabulate(DRESSES, headers="keys", tablefmt="fancy_grid"))
+            # print(DRESSES.values())
+            # print(
+            #     tabulate([DRESSES.values()], headers=dress_headers))
             # print(
             # tabulate([DRESSES.values()], headers=dress_headers))
             # print(
