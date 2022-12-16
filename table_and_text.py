@@ -8,12 +8,11 @@ class UserResults:
     # def __init__(self, user_name, part_name, location, date:
     #     self.__name = user_name
     #     seld.
-    def __init__(self, user_name, partner, date, dresses, venues, budget):
+    def __init__(self, user_info, dresses, venues, budget):
         # need to have two private and public
-        self.user_name = user_name
-        self.partner = partner
-        # self.__location = location
-        self.date = date
+        self.user_name = user_info[0]
+        self.partner = user_info[1]
+        self.date = user_info[2]
         self.__dresses = dresses
         self.__venues = venues
         self.__budget = budget
@@ -21,9 +20,12 @@ class UserResults:
     def get_personal_info(self):
         return (self.__user_name, self.__partner, self.location, self.date)
 
-    def __text_file():
+    def __text_file(lines):
         # going to write the data to another file as an output
-        pass
+        with open('say_yes.txt', 'w') as f:
+            for line in lines:
+                f.write(line)
+                f.write('\n')
 
     def user_info_print(self):
         # with print out the name, a partners name, and the date which is a tuple
