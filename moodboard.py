@@ -1,7 +1,8 @@
 from tabulate import tabulate
+import table_and_text
 
 DRESSES = []
-VENUES = {}
+VENUES = []
 BUDGET = {}
 
 
@@ -14,7 +15,7 @@ def dresses():
         "What's body type is  of your dress? For example there is mermaid, ballgown, column, and more\n")
     lace = input("Is the dress your looking at lace (Y/N)?\n")
     beaded = input("Is the dress your looking at beaded?(Y/N)\n")
-    designer = input("What designer makes your potenital dress\n")
+    designer = input("What designer makes your potenital dress?\n")
     price = input("How much does this dress cost?\n")
     new_dress = {
         '': len(DRESSES) + 1,
@@ -31,19 +32,27 @@ def dresses():
     # new_dress.append(beaded)
     # new_dress.append(company)
     # new_dress.append(shop)
-    print(new_dress)
+    # print(new_dress)
     DRESSES.append(new_dress)
     # new_dress.clear()
     # make the counter have for the dictionary value
 
 
-# def venue():
-#     new_venue = []
-#     print("Lets make that list of venues!")
-#     venue_loc = input("Where is this venue?\n")
-#     venue_i_o = input("Is it indoor or outdoor?")
-#     vendors = input("Do they provide everything?(Y/N)\n")
-#     price = {"How much does this venue cost?"}
+def venue():
+    #     new_venue = []
+    print("Lets make that list of venues!")
+    venue_loc = input("Where is this venue?\n")
+    venue_i_o = input("Is it indoor or outdoor?")
+    vendors = input("Do they provide everything?(Y/N)\n")
+    price = {"How much does this venue cost?"}
+    new_venue = {
+        '': len(VENUES) + 1,
+        'Location': venue_loc,
+        'Indoor/Outdoor': venue_i_o,
+        'What do they provide': vendors,
+        'Price': price
+    }
+    VENUES.append(new_venue)
 #     # include if else for Y/Ns
 #     # maybe add an if else condition to have what they do not include
 #     # if statemnt to add dollar sign
@@ -82,8 +91,12 @@ def budget():
     BUDGET["Budget Remaining "] = leftover
 
 
-def generate_table_and_text():
-    print("Generating Table...")
+def generate_table_and_text(user_info):
+    # all_info = set(user_info, VENUES, BUDGET, DRESSES)
+    print("Taking all information and getting it together...")
+    print("Generating Text...")
+    # table_and_text(all_info)
+    # where I would use the class to generate an output file
 
 
 def menu(user_info):
@@ -97,10 +110,10 @@ def menu(user_info):
         f"Hi {user_info[0]}, lets start making your list for you and {user_info[1]} special day!")
     while not choice:
         menu_choice = input(
-            "Please choose the corresponding letter from one of the following to enter your new idea:\n A.Dresses\n B.Budget\n C.Exit\n ")
-        if menu_choice.upper() == 'C':
+            "Please choose the corresponding letter from one of the following to enter your new idea:\n A.Dresses\n B.Venue\n C.Budget\n D.Exit\n ")
+        if menu_choice.upper() == 'D':
             choice = True
-            return print(user_info)
+            generate_table_and_text(user_info)
         elif menu_choice.upper() == 'A':
             # DRESSES[len(DRESSES)] = dress_headers
             dresses()
@@ -122,8 +135,10 @@ def menu(user_info):
             #     print("{:<10} {:<10} {:<10} {:<10} {:<10} {:<10}".format(length, dress_type, lace,
             #                                                              beaded, company, shop))
             # ------------------------------------------------------
-        # elif menu_choice.upper() == 'B':
-        #     venue()
+        elif menu_choice.upper() == 'B':
+            venue()
+            print(tabulate(VENUES, headers='keys',
+                  tablefmt="fancy_grid"))
         #     print("{:<10} {:<10} {:<10} {:<10}".format(
         #         'Location', 'Indoor/Outdoor', 'What Do They Provide', 'Price'))
         #     for key, value in VENUES.items():
@@ -132,7 +147,7 @@ def menu(user_info):
         #             location, i_o, provide, price))
             # print(tabulate([VENUES], headers=venue_headers,
             #       tablefmt="fancy_grid"))
-        elif menu_choice.upper() == 'B':
+        elif menu_choice.upper() == 'C':
             budget()
             # print(BUDGET)
             print(tabulate([BUDGET], headers='keys',
