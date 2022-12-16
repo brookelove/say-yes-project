@@ -20,6 +20,7 @@ class UserResults:
         return (self.__user_name, self.__partner, self.location, self.date)
 
     def __text_file():
+        # going to write the data to another file as an output
         pass
 
     def user_info_print():
