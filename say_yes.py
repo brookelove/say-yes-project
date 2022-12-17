@@ -21,6 +21,7 @@ TODAY = datetime.date.today()
 
 
 def date_valid(d):  # USER DEFINED FUNCTION NEEDS A RETURN
+    # print("in here")
     entered_date = d[0]
     # print(entered_date)
     for i in entered_date:
@@ -29,18 +30,24 @@ def date_valid(d):  # USER DEFINED FUNCTION NEEDS A RETURN
     # print(entered_date)
     entered_date_split = entered_date.split('-')
     entered_date_split = entered_date_split[-1:] + entered_date_split[:-1]
+    # print("1")
     # print(entered_date_split[1])
+    # print("2")
     # print(entered_date_split[2])
+    # print("0")
     # print(entered_date_split[0])
     entered_date = '-'.join(entered_date_split)
-    print(entered_date)
+    # print(entered_date[0])
+    # print(int(entered_date[0]) > TODAY.year)
+    # print(int(entered_date[0]) < TODAY.year)
+    # print(entered_date)
     if len(entered_date_split) > 3:
-        raise exceptions.OutOfBounds
-    elif int(entered_date_split[1]) <= 1 and int(entered_date_split[1]) >= 12:
+        raise IndexError
+    elif int(entered_date_split[2]) < 1 or int(entered_date_split[2]) > 12:
         raise exceptions.NonValdMonth
-    elif int(entered_date_split[2]) <= 1 and int(entered_date_split[2]) >= 31:
+    elif int(entered_date_split[1]) < 1 or int(entered_date_split[1]) > 31:
         raise exceptions.NotValidDay
-    elif int(entered_date[0]) > TODAY.year:
+    elif int(entered_date_split[0]) < TODAY.year:
         raise exceptions.NotValidYear
     # elif datetime.datetime.strptime(entered_date, "%y-%m-%d"):
     #     raise exceptions.NotValidDate
@@ -56,9 +63,7 @@ def date_valid(d):  # USER DEFINED FUNCTION NEEDS A RETURN
 
 
 def introStatement():
-    print("Welcome to the Say Yes Project")
-    print("Congradulations on your upcoming wedding!")
-    print("Lets get some information from you before we create your list!")
+    print("Welcome to the Say Yes Project!\nCongradulations on your upcoming wedding!\nLets get some information from you before we create your list!")
     user_name = input("What is your name? ")
     partner_name = input("What is your partner's name? ")
     wedding_date = input(
@@ -82,15 +87,16 @@ if __name__ == "__main__":
         # place = ['10/24/2024']
         done = False
         while not done:
-            # basic_info = introStatement()
-            basic_info = ('Brooke', 'David', '27/10/2024')
+            basic_info = introStatement()
+            # basic_info = ('Brooke', 'David', '27/10/2024')
             date = basic_info[2].split()
             # print(date)
+            date_valid(date)
             #result = introStatement()
             # thee result should be introstatement()
-            result = date_valid(date)
+            # result = date_valid(date)
             done = True
-    except exceptions.OutOfBounds:
+    except IndexError:
         print(
             "You have entered a invalid Date please try again with this format (DD/MM/YYYY)")
     # except exceptions.NotValidDate:
@@ -100,7 +106,7 @@ if __name__ == "__main__":
     except exceptions.NonValdMonth:
         print("You enterd a month that does not exist please try again")
     except exceptions.NotValidDay:
-        print("Please enter a date that is between 1 - 31")
+        print("Please enter a day that is between 1 - 31")
     else:
         # start of the taking in the data
         # print(pl)
